@@ -28,12 +28,12 @@ def test_get_coin_combination(cents, expected):
     if expected is not None:
         assert result == expected
     else:
-        total = result[0]*1 + result[1]*5 + result[2]*10 + result[3]*25
+        total = result[0] * 1 + result[1] * 5 + result[2] * 10 + result[3] * 25
         assert total == cents
 
 def test_non_negative_and_total():
     for cents in [0, 1, 2, 5, 7, 10, 23, 50, 99, 100, 500]:
         coins = get_coin_combination(cents)
-        total = coins[0]*1 + coins[1]*5 + coins[2]*10 + coins[3]*25
+        total = coins[0] * 1 + coins[1] * 5 + coins[2] * 10 + coins[3] * 25
         assert total == cents
         assert all(x >= 0 for x in coins)
