@@ -23,7 +23,9 @@ from app.main import get_coin_combination
         (1234, None),
     ]
 )
-def test_get_coin_combination(cents, expected):
+def test_get_coin_combination(
+    cents: int, expected: list[int] | None
+) -> None:
     result = get_coin_combination(cents)
     if expected is not None:
         assert result == expected
@@ -31,7 +33,8 @@ def test_get_coin_combination(cents, expected):
         total = result[0] * 1 + result[1] * 5 + result[2] * 10 + result[3] * 25
         assert total == cents
 
-def test_non_negative_and_total():
+
+def test_non_negative_and_total() -> None:
     for cents in [0, 1, 2, 5, 7, 10, 23, 50, 99, 100, 500]:
         coins = get_coin_combination(cents)
         total = coins[0] * 1 + coins[1] * 5 + coins[2] * 10 + coins[3] * 25
